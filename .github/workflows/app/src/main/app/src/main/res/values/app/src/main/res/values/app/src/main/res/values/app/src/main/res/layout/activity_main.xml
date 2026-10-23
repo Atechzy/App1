@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212">
+
+    <!-- Top Navigation Bar -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#1E1E1E"
+        android:elevation="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="🎮 CoinRewards"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvCoinBalance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#333333"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:text="🪙 100 Coins"
+            android:textColor="#FFD700"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnWithdraw"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="8dp"
+            android:backgroundTint="#00C853"
+            android:text="Withdraw"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Main Game Hub (List of 21 Mini Games) -->
+    <ScrollView
+        android:id="@+id/gameListScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bannerAdContainer"
+        android:layout_below="@id/topBar"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/gameListContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp" />
+    </ScrollView>
+
+    <!-- Active Game Arena (Hidden until a game is clicked) -->
+    <LinearLayout
+        android:id="@+id/gameArenaContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bannerAdContainer"
+        android:layout_below="@id/topBar"
+        android:background="#121212"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnBackToHub"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:backgroundTint="#424242"
+                android:text="← Games"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvActiveGameTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="Game Title"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvActiveGameChances"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#3700B3"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:text="Chances: 5"
+                android:textColor="#FFFFFF"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/gameDynamicContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+
+    <!-- Bottom AdMob Banner Container -->
+    <FrameLayout
+        android:id="@+id/bannerAdContainer"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#1E1E1E" />
+
+    <!-- Mandatory Internet Enforcer Overlay -->
+    <LinearLayout
+        android:id="@+id/offlineBlocker"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FA121212"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="32dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📶"
+            android:textSize="64sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Internet Connection Required"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="An active internet connection is required to earn coins, sync chances, and load reward sponsors."
+            android:textColor="#B0BEC5"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnRetryInternet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#6200EE"
+            android:text="Retry Connection"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+</RelativeLayout>
